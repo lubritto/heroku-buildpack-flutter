@@ -90,13 +90,41 @@ if [ -x flutter/bin/flutter ]; then
   rm -rf $APP_DIR/flutter
 fi
 
+/$APP_DIR/dart-sdk/bin/dart pub get --directory=./server
+
 #  To read hidden directories and use move with exclusion.
 shopt -s extglob
+
+# Check  FLUTTER_CLEANUP var to delete all files or keep it.
+if [ "$FLUTTER_CLEANUP" != false ]; then
+
+  mkdir -p $APP_DIR/TO_DELETE
+
+  mv !("TO_DELETE") TO_DELETE
+  mv TO_DELETE/build/web/* $APP_DIR
+  mv TO_DELETE/dart-sdk $APP_DIR
+  rm -rf TO_DELETE
+
+fi
+
+# Activate dhttpd dart package to run the server.
+# Is taken from my Github repo because some variables need to be changed every run
+# like PORT from environment.
+
+if [ -d "$CACHE_DIR/.pub-cache/" ]; then
+  print "dhttpd Found in cache. Restoring."
+  cp -R $CACHE_DIR/.pub-cache/* $PUB_CACHE
+else
+  print "Getting dhtppd to run web service."
+  mkdir -p $CACHE_DIR/.pub-cache/
+  cp -R $PUB_CACHE/* $CACHE_DIR/.pub-cache/
+fi
+
+# Moving to the build, after running the compile. All will be deleted and removed to app directory.
+# Copying the result, the files will be kept in storage.
+cp -R $PUB_CACHE $APP_DIR
 
 du -h -d 2 | sort -n
 
 export PATH="$PATH":"/$APP_DIR/dart-sdk/bin/"
 export PATH="$PATH":"/$APP_DIR/.pub-cache/bin"
-
-/$APP_DIR/dart-sdk/bin/dart pub get --directory=./server
-
