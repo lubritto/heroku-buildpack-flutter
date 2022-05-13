@@ -101,7 +101,6 @@ if [ "$FLUTTER_CLEANUP" != false ]; then
   mkdir -p $APP_DIR/TO_DELETE
 
   mv !("TO_DELETE") TO_DELETE
-  mv TO_DELETE/build/web/* $APP_DIR
   mv TO_DELETE/dart-sdk $APP_DIR
   rm -rf TO_DELETE
 
