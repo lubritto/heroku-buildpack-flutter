@@ -127,5 +127,6 @@ fi
 # Copying the result, the files will be kept in storage.
 cp -R $PUB_CACHE $APP_DIR
 
-export PATH="$PATH":"/$APP_DIR/dart-sdk/bin/"
+export PATH="$PATH":"/$APP_DIR/dart-sdk/bin"
+export PATH="$PATH":"/$APP_DIR/flutter/bin"
 export PATH="$PATH":"/$APP_DIR/.pub-cache/bin"
