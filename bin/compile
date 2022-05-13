@@ -102,6 +102,7 @@ if [ "$FLUTTER_CLEANUP" != false ]; then
 
   mv !("TO_DELETE") TO_DELETE
   mv TO_DELETE/dart-sdk $APP_DIR
+  mv TO_DELETE/server $APP_DIR
   rm -rf TO_DELETE
 
 fi
@@ -122,8 +123,6 @@ fi
 # Moving to the build, after running the compile. All will be deleted and removed to app directory.
 # Copying the result, the files will be kept in storage.
 cp -R $PUB_CACHE $APP_DIR
-
-du -h -d 2 | sort -n
 
 export PATH="$PATH":"/$APP_DIR/dart-sdk/bin/"
 export PATH="$PATH":"/$APP_DIR/.pub-cache/bin"
