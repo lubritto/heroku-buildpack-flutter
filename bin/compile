@@ -98,5 +98,5 @@ du -h -d 2 | sort -n
 export PATH="$PATH":"/$APP_DIR/dart-sdk/bin/"
 export PATH="$PATH":"/$APP_DIR/.pub-cache/bin"
 
-pub get --directory=./server
+/$APP_DIR/dart-sdk/bin/dart pub get --directory=./server
 
