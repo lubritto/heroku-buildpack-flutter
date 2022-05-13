@@ -95,9 +95,8 @@ shopt -s extglob
 
 du -h -d 2 | sort -n
 
-$APP_DIR/dart-sdk/bin/dart pub get
-
 export PATH="$PATH":"/$APP_DIR/dart-sdk/bin/"
 export PATH="$PATH":"/$APP_DIR/.pub-cache/bin"
 
+pub get --directory=./server
 
