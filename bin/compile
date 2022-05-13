@@ -87,6 +87,18 @@ mkdir -p $PUB_CACHE
 if [ -x flutter/bin/flutter ]; then
   print "Saving Flutter SDK in Cache"
   rm -rf $CACHE_DIR/flutter
+  rm -rf $APP_DIR/flutter/bin/cache/flutter_web_sdk
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-arm
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-arm-profile
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-arm-release
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-arm64
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-arm64-profile
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-arm64-release
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-x64
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-x64-profile
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-x64-release
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-x86
+  rm -rf $APP_DIR/flutter/bin/cache/artifacts/engine/android-x86-jit-release
   mv $APP_DIR/flutter/bin/cache/dart-sdk/ $APP_DIR
 fi
 
